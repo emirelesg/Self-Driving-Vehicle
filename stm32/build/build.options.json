@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "/definitions.h",
+  "builtInLibrariesFolders": "/opt/arduino-1.8.9/libraries",
+  "customBuildProperties": "build.warn_data_percentage=75",
+  "fqbn": "Arduino_STM32-master:STM32F1:genericSTM32F103C:device_variant=STM32F103C8,upload_method=serialMethod,cpu_speed=speed_72mhz,opt=osstd",
+  "hardwareFolders": "/opt/arduino-1.8.9/hardware,/home/pi/.arduino15/packages,/home/pi/Arduino/hardware",
+  "otherLibrariesFolders": "/home/pi/Arduino/libraries",
+  "runtime.ide.version": "10809",
+  "sketchLocation": "/home/pi/Desktop/stm32/voltage-monitor/voltage-monitor.ino",
+  "toolsFolders": "/opt/arduino-1.8.9/tools-builder,/opt/arduino-1.8.9/hardware/tools/avr,/home/pi/.arduino15/packages"
+}
