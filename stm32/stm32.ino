@@ -1,5 +1,4 @@
 #include <CircularBuffer.h>
-#include "definitions.h"
 #include <math.h>
 
 #define BATTERY_THRESHOLD           5
