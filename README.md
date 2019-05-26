@@ -1,25 +1,30 @@
 # Lane Tracking and Keeping System for an Autonomous Vehicle
 
-Self-driving vehicle with lane keeping system functionality. The vehicle uses a Kalman Filter for tracking lanes and a single monocular camera for detection purposes. The target platform is a Raspberry Pi 3B+. 
+Self-driving vehicle with lane keeping system functionality. The vehicle uses OpenCV with a Kalman Filter for tracking lanes and a single monocular camera for detection purposes. The target platform is a Raspberry Pi 3B+ with a STM32F103C8 as a motor and battery controller. 
 
 <img src="./images/rpi-recording.gif" alt="Webcam capture from drive test.">
 
 <img src="./images/car.jpg" alt="Self-driving vehicle with a RPi." width="400px">
 
 ### Prerequisites
-- Python 3
+- Python 3.6.7
+- OpenCV 3.4.3 (lane detection).
+- FilterPy 1.4.5 (for implementing the Kalman Filter).
+- Numpy 1.16.2
+- Imutils (for a threaded RPi camera implementation).
+- Arduino & STM32 libraries (https://siliconjunction.wordpress.com/2017/03/21/flashing-the-stm32f-board-using-a-raspberry-pi-3/)
 
 ### Project Structure
 
 The `src` folder contains the required files for running the lane keeping system on the RPi:
 
-- `car.py`: consists of the interface between `main.py` and the STM-32 controller. When started, it spwans a thread that monitors constantly the serial port for messages. The STM-32 controls the motors' speed and monitors the voltage of the batteries.
+- `car.py`: consists of the interface between `main.py` and the STM32 controller. When started, it spwans a thread that monitors constantly the serial port for messages. The STM32 controls the motors' speed and monitors the voltage of the batteries.
 - `processor.py`: implements the lane detection algorithms. Output from this class are the detected lanes.
 - `tracker.py`: implements the Kalman Filter for processing the output of the Processor class. Outputs the filtered lanes.
 - `line.py`: consists of a class for storing the points found via the Hough-Transform. Outputs the first order polynomial that best fits those points.
 - `main.py`: entry point for the program. Takes the output from the camera, passes the frame to the processor class, calculates the PID output, and sends the control speed via the car class.
 
-The `stm32` folder contains the source code for the STM-32 microcontroller.
+The `stm32` folder contains the source code for the STM32F103C8 microcontroller.
 
 ### Working Principle
 
